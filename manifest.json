@@ -1,0 +1,32 @@
+{
+    "manifest_version":2,
+
+    "name": "Administration 12",
+    "description": "NYT Surveillance Report",
+    "version": "0.1",
+
+    "permissions": [
+      "tabs","<all_urls>"
+    ],
+
+    "web_accessible_resources": [
+      "public/terror_keywords.json"
+    ],
+
+    "permissions": [
+       "storage"
+     ],
+
+    "content_scripts": [
+        {
+        "matches": [
+            "http://*.nytimes.com/*",
+            "https://*.nytimes.com/*"
+            ],
+        "js": ["vendor/jquery.js", "vendor/numeral.js", "a12.js"],
+        "run_at": "document_end"
+        }
+    ],
+    
+    "options_page": "settings/settings.html"
+}

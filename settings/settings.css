@@ -1,0 +1,40 @@
+#main {
+  padding: 0em 3em;
+}
+
+.console {
+  border-radius: 1em;
+  border: 5px solid #333;
+  padding: 2em;
+}
+
+.console .events {
+  padding: 1em;
+  margin-top: 1em;
+  max-height: 400px;
+  overflow: auto;
+  box-shadow: inset 1px 4px 9px -6px;
+  display: none;
+}
+
+.console .events .title, .console .events .content {
+  display: inline-block;
+}
+
+.console .events .title {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #555;
+  width: 200px;
+}
+
+.console .events .content {
+  font-style: italic;
+}
+
+.console .events .event.secondary .title {
+  margin-left: 1em;
+  margin-right: -1em;
+  color: #777;
+  font-weight: normal;
+}
