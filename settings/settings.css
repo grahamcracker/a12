@@ -38,3 +38,17 @@
   color: #777;
   font-weight: normal;
 }
+
+#heatContainer{
+  width: 100%;
+  margin: 1em 0em;
+  border: 1em solid #999;
+  border-radius: 1em;
+  height: 500px;
+  overflow: auto;
+}
+
+#heatCanvas{
+  width: 80%;
+  height: 80%;
+}

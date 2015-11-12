@@ -23,10 +23,10 @@
             "http://*.nytimes.com/*",
             "https://*.nytimes.com/*"
             ],
-        "js": ["vendor/jquery.js", "vendor/numeral.js", "a12.js"],
+        "js": ["vendor/jquery.js", "vendor/numeral.js", "vendor/simpleheat.js", "a12.js", "heatmap.js"],
         "run_at": "document_end"
         }
     ],
-    
+
     "options_page": "settings/settings.html"
 }

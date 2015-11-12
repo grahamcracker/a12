@@ -22,9 +22,22 @@
       </ul>
     </div>
   </div>
+
+  <h4> Heatmaps</h4>
+    <button class="clearHeatmaps btn btn-warning">Clear Heatmaps</button>
+
+    <select id="heatmapSelector">
+      <option>Loading heatmaps...</option>
+    </select>
+
+    <div id="heatContainer">
+      <canvas id="heatCanvas">
+      </canvas>
+    </div>
 </div>
 
   <script src="../vendor/jquery.js"></script>
+  <script src="../vendor/simpleheat.js"></script>
   <script src="settings.js"></script>
 </body>
 </html>

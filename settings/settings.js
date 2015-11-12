@@ -1,8 +1,13 @@
+heatmapURLs = [];
+heatpoints = [];
+
 function refreshEvents(){
   chrome.storage.local.get('events', function(items) {
     var events = items.events;
     var $loading = $(".console > .loading");
     var $events = $(".console > .events");
+
+    // load events
 
     $events.html("");
 
@@ -28,8 +33,39 @@ function refreshEvents(){
     }
 
     $events.animate({ scrollTop: $events[0].scrollHeight}, 300);
+
+    // load heatmaps
+    var $heatmapSelector = $("#heatmapSelector");
+
+    chrome.storage.local.get({heatmaps: {}}, function(s) {
+      var heatmaps = s.heatmaps;
+
+      $heatmapSelector.html("");
+
+      $.each(heatmaps, function(url, data){
+        heatmapURLs.push(url);
+        $heatmapSelector.append($("<option>", { value: url, html: url.substring(0,120)}));
+        heatpoints.push(data);
+      });
+
+      if(heatmapURLs.length > 0){
+        loadHeatmap(0);
+      }else{
+        $heatmapSelector.append($("<option>", { value: '', html: 'No heatmaps yet! View a page and mouse around for at least ten seconds.', disabled: 'disabled'}));
+      }
+    });
+
+    $heatmapSelector.on('change', function() {
+      loadHeatmap(this.selectedIndex);
+    });
+
   });
 };
+
+function loadHeatmap(index){
+  var data = heatpoints[index];
+  simpleheat('heatCanvas').data(data).radius(1.5, 3).draw();
+}
 
 function clearEvents(){
   chrome.storage.local.set({events: []}, function(){
@@ -37,11 +73,18 @@ function clearEvents(){
   });
 };
 
+function clearHeatmaps(){
+  chrome.storage.local.set({heatmaps: []});
+}
+
 $(function(){
   refreshEvents();
-  //setInterval(refreshEvents, 500);
 
   $(".clearConsole").on('click', function(){
     clearEvents();
+  });
+
+  $(".clearHeatmaps").on('click', function(){
+    clearHeatmaps();
   });
 });
