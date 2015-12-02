@@ -64,6 +64,7 @@ function refreshEvents(){
 
 function loadHeatmap(index){
   var data = heatpoints[index];
+  $("#heatmapNumber").html(data.length + ' mousepoints');
   simpleheat('heatCanvas').data(data).radius(1.5, 3).draw();
 }
 
