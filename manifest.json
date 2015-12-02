@@ -28,5 +28,11 @@
         }
     ],
 
-    "options_page": "settings/settings.html"
+    "options_page": "settings/settings.html",
+    
+    "icons": {
+        "16": "images/a12_ico16.png",
+        "48": "images/a12_ico48.png",
+        "128": "images/a12_ico128.png"
+    }
 }
