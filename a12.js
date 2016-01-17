@@ -15,6 +15,10 @@ function sendConsoleEvents(){
   });
 }
 
+function objectForItem(item){
+  return (item instanceof Array || item === undefined) ? {} : item;
+}
+
 var keywords = [];
 var newEvents = [];
 

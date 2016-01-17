@@ -8,7 +8,7 @@ $('body').mousemove(function(event){
 
 function sendHeatmap(){
   chrome.storage.local.get('heatmaps', function(items) {
-    var heatmaps = (items.heatmaps instanceof Array) ? {} : items.heatmaps;
+    var heatmaps = objectForItem(items.heatmaps);
 
     var thisPageKey = window.location.href;
 
