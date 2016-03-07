@@ -10,7 +10,8 @@
     ],
 
     "web_accessible_resources": [
-      "public/terror_keywords.json"
+      "public/terror_keywords.json",
+      "insert/modal.html"
     ],
 
     "permissions": [
@@ -23,13 +24,14 @@
             "http://*.nytimes.com/*",
             "https://*.nytimes.com/*"
             ],
-        "js": ["vendor/jquery.js", "vendor/numeral.js", "vendor/simpleheat.js", "a12.js", "heatmap.js"],
+        "js": ["vendor/jquery.js", "vendor/numeral.js", "vendor/simpleheat.js", "a12.js", "heatmap.js", "insert/insert.js"],
+        "css": ["insert/insert.css"],
         "run_at": "document_end"
         }
     ],
 
     "options_page": "settings/settings.html",
-    
+
     "icons": {
         "16": "images/a12_ico16.png",
         "48": "images/a12_ico48.png",
