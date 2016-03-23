@@ -11,7 +11,10 @@
 
     "web_accessible_resources": [
       "public/terror_keywords.json",
-      "insert/modal.html"
+      "insert/welcome_modal.html",
+      "insert/help_modal.html",
+      "insert/report_modal.html",
+      "insert/insert.html"
     ],
 
     "permissions": [
