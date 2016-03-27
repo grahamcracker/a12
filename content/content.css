@@ -2,6 +2,11 @@ body.a12_modal_open{
   overflow: hidden;
 }
 
+.a12_insert.button{
+  font-weight: bold;
+  color: #a81817;
+}
+
 .a12_modal{
   display: none;
   z-index: 1000000091;
@@ -48,4 +53,16 @@ body.a12_modal_open{
 .a12_modal button:focus{
   outline: 0;
   background-color: #1e1e1e;
+}
+
+.a12_modal button.secondary{
+  background-color: #666;
+}
+
+.a12_modal button.secondary:hover{
+  background-color: #888;
+}
+
+.a12_modal button.secondary:focus{
+  background-color: #444;
 }

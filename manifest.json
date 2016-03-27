@@ -11,10 +11,10 @@
 
     "web_accessible_resources": [
       "public/terror_keywords.json",
-      "insert/welcome_modal.html",
-      "insert/help_modal.html",
-      "insert/report_modal.html",
-      "insert/insert.html"
+      "content/welcome_modal.html",
+      "content/help_modal.html",
+      "content/report_modal.html",
+      "content/insert.html"
     ],
 
     "permissions": [
@@ -27,8 +27,8 @@
             "http://*.nytimes.com/*",
             "https://*.nytimes.com/*"
             ],
-        "js": ["vendor/jquery.js", "vendor/numeral.js", "vendor/simpleheat.js", "a12.js", "heatmap.js", "insert/insert.js"],
-        "css": ["insert/insert.css"],
+        "js": ["vendor/jquery.js", "vendor/numeral.js", "vendor/simpleheat.js", "a12.js", "heatmap.js", "content/content.js"],
+        "css": ["content/content.css"],
         "run_at": "document_end"
         }
     ],
