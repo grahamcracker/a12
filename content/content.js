@@ -52,6 +52,8 @@ var content = (function(){
     $.get(chrome.extension.getURL('content/report_modal.html'), function(html){
       $modalContainer.append(html);
 
+      $modalContainer.find("#threeletteragencies").attr("src", chrome.extension.getURL("images/threeletteragencies.png"));
+
       var $modalDoneButton = $modalContainer.find(".done");
       $modalDoneButton.click(function(){
         hideModal();

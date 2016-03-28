@@ -25,14 +25,20 @@ body.a12_modal_open{
   text-align: center;
 }
 
+.a12_modal h1, .a12_modal h4, .a12_modal p{
+  margin: 2rem;
+}
 .a12_modal h1{
-  margin-top: 2em;2
-  font-size: 2.5em;
+  font-size: 2rem;
+}
+
+.a12_modal h4{
+  font-size: 1.5rem;
 }
 
 .a12_modal p{
-  margin: 2em;
   font-size: 1em;
+  line-height: 1.2em;
 }
 
 .a12_modal button{
@@ -65,4 +71,33 @@ body.a12_modal_open{
 
 .a12_modal button.secondary:focus{
   background-color: #444;
+}
+
+.a12_modal button.small{
+  font-size: 1em;
+}
+
+.a12_modal.a12_modal_report .report_body{
+  background-color: #fff;
+  padding: 1em;
+  text-align: left;
+  width: 80%;
+  margin: 0 auto 1em auto;
+  border: 1px solid #111;
+  height: 70%;
+  overflow: scroll;
+}
+
+.a12_modal.a12_modal_report .report_body ul{
+  margin: 2em 3em;
+}
+
+.a12_modal.a12_modal_report .report_body ul > li > em{
+  color: #777;
+}
+
+.a12_modal.a12_modal_report .report_body #threeletteragencies{
+  display: block;
+  width: 60%;
+  margin: 0 auto;
 }

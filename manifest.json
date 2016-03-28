@@ -14,7 +14,8 @@
       "content/welcome_modal.html",
       "content/help_modal.html",
       "content/report_modal.html",
-      "content/insert.html"
+      "content/insert.html",
+      "images/threeletteragencies.png"
     ],
 
     "permissions": [
