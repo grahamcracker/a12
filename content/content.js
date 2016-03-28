@@ -59,12 +59,18 @@ var content = (function(){
     $.get(chrome.extension.getURL(reportModal.path), function(html){
       var $modal = $(html).appendTo($modalContainer);
 
-      $modal.find(".threeletteragencies").attr("src", chrome.extension.getURL("images/threeletteragencies.png"));
+      $modal.find('.threeletteragencies').attr('src', chrome.extension.getURL('images/threeletteragencies.png'));
+      $modal.find('.a12-logo').attr('src', chrome.extension.getURL('images/a12.png'));
 
-      $modal.find(".done").on('click', function(){
+      $modal.find('.done').on('click', function(){
         hideModals();
-        console.log('Restarting from report modal, should clear all existing data here');
+        console.log("Restarting from report modal, should clear all existing data here");
         showModal(welcomeModal);
+      });
+
+      chrome.storage.local.get({heatmaps: {}}, function(s) {
+        var heatmaps = s.heatmaps;
+        $modal.find('#heatmaps .count').html(Object.keys(s.heatmaps).length);
       });
 
       // Last modal is loaded, so we'll start the timing logic

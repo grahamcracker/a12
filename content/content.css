@@ -1,13 +1,13 @@
-body.a12_modal_open{
+body.a12_modal_open {
   overflow: hidden;
 }
 
-.a12_insert.button{
+.a12_insert.button {
   font-weight: bold;
   color: #a81817;
 }
 
-.a12_modal{
+.a12_modal {
   display: none;
   z-index: 1000000091;
   position: absolute;
@@ -25,23 +25,31 @@ body.a12_modal_open{
   text-align: center;
 }
 
-.a12_modal h1, .a12_modal h4, .a12_modal p{
+.a12_modal h1, .a12_modal h4, .a12_modal h3, .a12_modal p, .a12_modal table {
   margin: 2rem;
 }
-.a12_modal h1{
+.a12_modal h1 {
   font-size: 2rem;
 }
 
-.a12_modal h4{
+.a12_modal h3 {
   font-size: 1.5rem;
 }
 
-.a12_modal p{
+.a12_modal .underline {
+  text-decoration: underline;
+}
+
+.a12_modal h4 {
+  font-size: 1.2rem;
+}
+
+.a12_modal p {
   font-size: 1em;
   line-height: 1.2em;
 }
 
-.a12_modal button{
+.a12_modal button {
   padding: .5em 1em;
   font-size: 1.5em;
   background-color: #333;
@@ -52,52 +60,86 @@ body.a12_modal_open{
   border-radius: .3em;
 }
 
-.a12_modal button:hover{
+.a12_modal button:hover {
   background-color: #555;
 }
 
-.a12_modal button:focus{
+.a12_modal button:focus {
   outline: 0;
   background-color: #1e1e1e;
 }
 
-.a12_modal button.secondary{
+.a12_modal button.secondary {
   background-color: #666;
 }
 
-.a12_modal button.secondary:hover{
+.a12_modal button.secondary:hover {
   background-color: #888;
 }
 
-.a12_modal button.secondary:focus{
+.a12_modal button.secondary:focus {
   background-color: #444;
 }
 
-.a12_modal button.small{
+.a12_modal button.small {
   font-size: 1em;
 }
 
-.a12_modal.a12_modal_report .body{
+.a12_modal.a12_modal_report {
+  padding-top: 0px;
   background-color: #fff;
-  padding: 1em;
+  overflow: auto;
+  height: 100%;
+}
+
+.a12_modal.a12_modal_report .body {
+  padding: 2em 0em 1em 0em;
   text-align: left;
-  width: 80%;
-  margin: 0 auto 1em auto;
-  border: 1px solid #111;
-  height: 70%;
-  overflow: scroll;
+  width: 70%;
+  margin: 0 auto;
 }
 
-.a12_modal.a12_modal_report .body ul{
-  margin: 2em 3em;
+.a12_modal.a12_modal_report h1 {
+  margin-top: 3rem;
 }
 
-.a12_modal.a12_modal_report .body ul > li > em{
+.a12_modal.a12_modal_report .body ul {
+  margin: 2em 4em;
+  list-style-type:disc;
+}
+
+.a12_modal.a12_modal_report .body ul > li > em {
   color: #777;
 }
 
-.a12_modal.a12_modal_report .body .threeletteragencies{
-  display: block;
+.a12_modal.a12_modal_report table.metadata {
   width: 60%;
-  margin: 0 auto;
+  background-color: #ccc;
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+.a12_modal.a12_modal_report table.metadata td {
+  border: 1px solid #fff;
+}
+
+.a12_modal.a12_modal_report span.redacted::before {
+  display: inline-block;
+  content: "REDACTED";
+  font-family: "Courier New", serif;
+  font-weight: bold;
+  background-color: #ba0b0b;
+  color: #fff;
+  padding: 0em 2em;
+}
+
+.a12_modal.a12_modal_report .body .threeletteragencies, .a12_modal.a12_modal_report .body .a12-logo{
+  display: block;
+  margin: 0 auto 1em auto;
+}
+.a12_modal.a12_modal_report .body .threeletteragencies {
+  width: 60%;
+}
+
+.a12_modal.a12_modal_report .body .a12-logo {
+  width: 250px;
 }
