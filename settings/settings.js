@@ -1,13 +1,14 @@
 heatmapURLs = [];
 heatpoints = [];
 
-function refreshEvents(){
+function refreshWidgets(){
+
+  // Load events
+
   chrome.storage.local.get('events', function(items) {
     var events = items.events;
     var $loading = $(".console > .loading");
     var $events = $(".console > .events");
-
-    // load events
 
     $events.html("");
 
@@ -33,32 +34,55 @@ function refreshEvents(){
     }
 
     $events.animate({ scrollTop: $events[0].scrollHeight}, 300);
+  });
 
-    // load heatmaps
-    var $heatmapSelector = $("#heatmapSelector");
+  // Load heatmaps
 
-    chrome.storage.local.get({heatmaps: {}}, function(s) {
-      var heatmaps = s.heatmaps;
+  var $heatmapSelector = $("#heatmapSelector");
 
-      $heatmapSelector.html("");
+  chrome.storage.local.get({heatmaps: {}}, function(s) {
+    var heatmaps = s.heatmaps;
 
-      $.each(heatmaps, function(url, data){
-        heatmapURLs.push(url);
-        $heatmapSelector.append($("<option>", { value: url, html: url.substring(0,120)}));
-        heatpoints.push(data);
-      });
+    $heatmapSelector.html("");
 
-      if(heatmapURLs.length > 0){
-        loadHeatmap(0);
-      }else{
-        $heatmapSelector.append($("<option>", { value: '', html: 'No heatmaps yet! View a page and mouse around for at least ten seconds.', disabled: 'disabled'}));
-      }
+    $.each(heatmaps, function(url, data){
+      heatmapURLs.push(url);
+      $heatmapSelector.append($("<option>", { value: url, html: url.substring(0,120)}));
+      heatpoints.push(data);
     });
 
-    $heatmapSelector.on('change', function() {
-      loadHeatmap(this.selectedIndex);
-    });
+    if(heatmapURLs.length > 0){
+      loadHeatmap(0);
+    }else{
+      $heatmapSelector.append($("<option>", { value: '', html: 'No heatmaps yet! View a page and mouse around for at least ten seconds.', disabled: 'disabled'}));
+    }
+  });
 
+  $heatmapSelector.on('change', function() {
+    loadHeatmap(this.selectedIndex);
+  });
+
+  // Load timing
+
+  var $timing = $('#timing');
+  var nowDate = new Date();
+  $timing.find('.current > em').html(nowDate);
+
+  chrome.storage.local.get('triggerReportTime', function(items){
+    var triggerReportTime = items.triggerReportTime;
+    var $reportTimeField = $timing.find('.triggers > em');
+
+    if(typeof(triggerReportTime) == 'undefined'){
+      $reportTimeField.html("Not set yet.");
+    } else {
+      var triggerDate = new Date(triggerReportTime);
+      var comments = (triggerDate < nowDate) ? "<strong>(Will trigger on next pageload</strong>)" : "";
+      $reportTimeField.html(triggerDate + " " + comments);
+    }
+  });
+
+  $("#timing > .setToNow").on('click', function(){
+    setTimingToNow();
   });
 };
 
@@ -70,7 +94,7 @@ function loadHeatmap(index){
 
 function clearEvents(){
   chrome.storage.local.set({events: []}, function(){
-    refreshEvents();
+    refreshWidgets();
   });
 };
 
@@ -78,14 +102,24 @@ function clearHeatmaps(){
   chrome.storage.local.set({heatmaps: []});
 }
 
-$(function(){
-  refreshEvents();
+function setTimingToNow(){
+  chrome.storage.local.set({'triggerReportTime': (new Date()).getTime()}, function(){
+    refreshWidgets();
+  });
+}
 
-  $(".clearConsole").on('click', function(){
+$(function(){
+  refreshWidgets();
+
+  $('#refresh').on('click', function(){
+    refreshWidgets();
+  });
+
+  $('.clearConsole').on('click', function(){
     clearEvents();
   });
 
-  $(".clearHeatmaps").on('click', function(){
+  $('.clearHeatmaps').on('click', function(){
     clearHeatmaps();
   });
 });

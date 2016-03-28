@@ -2,9 +2,18 @@
   padding: 0em 3em;
 }
 
+.btn:focus {
+  outline: none;
+}
+
 #logo {
   height: 100px;
   padding: 2em 0em;
+}
+
+#refresh {
+  display: block;
+  margin-bottom: 2em;
 }
 
 .console {
@@ -44,7 +53,7 @@
   font-weight: normal;
 }
 
-#heatContainer{
+#heatContainer {
   width: 100%;
   margin: 1em 0em;
   border: 1em solid #999;
@@ -53,7 +62,23 @@
   overflow: auto;
 }
 
-#heatCanvas{
+#heatCanvas {
   width: 90%;
   height: 90%;
+}
+
+#timing > p > span, #timing button.setToNow {
+  margin-left: 2em;
+}
+
+#timing > p > span {
+  display: inline-block;
+  width: 10em;
+  font-size: .9em;
+  font-weight: bold;
+}
+
+#timing > p > em {
+  color: #999;
+  font-size: 1.1em;
 }

@@ -11,6 +11,8 @@
 
     <img src="../images/a12.png" id="logo" />
 
+    <button class="btn btn-warning" id="refresh">Refresh All Widgets</button>
+
     <div class="console">
       <h4>Console</h4>
 
@@ -24,18 +26,31 @@
   </div>
 
   <h4> Heatmaps</h4>
-    <button class="clearHeatmaps btn btn-warning">Clear Heatmaps</button>
+  <button class="clearHeatmaps btn btn-warning">Clear Heatmaps</button>
 
-    <select id="heatmapSelector">
-      <option>Loading heatmaps...</option>
-    </select>
+  <select id="heatmapSelector">
+    <option>Loading heatmaps...</option>
+  </select>
 
-    <span id="heatmapNumber"></span>
+  <span id="heatmapNumber"></span>
 
-    <div id="heatContainer">
-      <canvas id="heatCanvas">
-      </canvas>
-    </div>
+  <div id="heatContainer">
+    <canvas id="heatCanvas">
+    </canvas>
+  </div>
+
+  <h4>Report Modal Timing</h4>
+  <div id="timing">
+    <p class="current">
+      <span>Current time</span>
+      <em></em>
+    </p>
+    <p class="triggers">
+      <span>Report triggers at</span>
+      <em></em>
+    </p>
+    <button class="btn btn-warning setToNow">Set to now</button>
+  </div>
 </div>
 
   <script src="../vendor/jquery.js"></script>
