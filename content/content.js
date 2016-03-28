@@ -2,13 +2,26 @@ var content = (function(){
 
   // private
 
-  var $body = $("body");
+  var $body = $('body');
   var $modalContainer;
-  var $insert;
 
-  var MODAL_WELCOME = '.a12_modal_welcome';
-  var MODAL_HELP = '.a12_modal_help';
-  var MODAL_REPORT = '.a12_modal_report';
+  var modalContainerTemplate = "<div id='a12_modal_container'></div>";
+  var modalOpenClass = 'a12_modal_open';
+  var welcomeModal = {
+    selector: '.a12_modal_welcome',
+    path: 'content/welcome_modal.html'
+  };
+  var helpModal = {
+    selector: '.a12_modal_help',
+    path: 'content/help_modal.html'
+  };
+  var reportModal = {
+    selector: '.a12_modal_report',
+    path: 'content/report_modal.html'
+  };
+
+  var insertContainerSelector = '.quick-navigation.button-group';
+  var insertPath = 'content/insert.html';
 
   var init = function(){
     prepareModals();
@@ -16,48 +29,42 @@ var content = (function(){
   };
 
   var prepareModals = function(){
-    $body.prepend("<div id='a12_modal_container'></div>");
+    $modalContainer = $(modalContainerTemplate).prependTo($body);
 
-    $modalContainer = $("#a12_modal_container");
-
-    $.get(chrome.extension.getURL('content/welcome_modal.html'), function(html){
+    $.get(chrome.extension.getURL(welcomeModal.path), function(html){
       var $modal = $(html).appendTo($modalContainer);
 
-      var $modalBeginButton = $modal.find(".begin");
-      $modalBeginButton.click(function(){
-        hideModal();
+      $modal.find(".begin").on('click', function(){
+        hideModals();
         resetReportTimer();
       });
     });
 
-    $.get(chrome.extension.getURL('content/help_modal.html'), function(html){
+    $.get(chrome.extension.getURL(helpModal.path), function(html){
       var $modal = $(html).appendTo($modalContainer);
 
-      var $modalRestartButton = $modal.find(".restart");
-      $modalRestartButton.click(function(){
-        hideModal();
+      $modal.find(".restart").on('click', function(){
+        hideModals();
         console.log('Restarting from help modal, do something here');
-        showModal(MODAL_WELCOME);
+        showModal(welcomeModal);
       });
 
-      var $modalContinueButton = $modalContainer.find(".continue");
-      $modalContinueButton.click(function(){
-        hideModal();
+      $modal.find(".continue").on('click', function(){
+        hideModals();
 
         console.log('Never mind...');
       });
     });
 
-    $.get(chrome.extension.getURL('content/report_modal.html'), function(html){
+    $.get(chrome.extension.getURL(reportModal.path), function(html){
       var $modal = $(html).appendTo($modalContainer);
 
-      $modal.find("#threeletteragencies").attr("src", chrome.extension.getURL("images/threeletteragencies.png"));
+      $modal.find(".threeletteragencies").attr("src", chrome.extension.getURL("images/threeletteragencies.png"));
 
-      var $modalDoneButton = $modal.find(".done");
-      $modalDoneButton.click(function(){
-        hideModal();
+      $modal.find(".done").on('click', function(){
+        hideModals();
         console.log('Restarting from report modal, should clear all existing data here');
-        showModal(MODAL_WELCOME);
+        showModal(welcomeModal);
       });
 
       // Last modal is loaded, so we'll start the timing logic
@@ -66,26 +73,27 @@ var content = (function(){
   };
 
   var showModal = function(modal){
-    $body.addClass("a12_modal_open");
-    var $modal = $modalContainer.find(modal);
-    console.log(modal);
-    $modal.fadeIn();
+    $body.addClass(modalOpenClass);
+
+    console.log(modal.selector);
+
+    $modalContainer.find(modal.selector).fadeIn();
   };
 
-  var hideModal = function(){
-    $body.removeClass("a12_modal_open");
+  var hideModals = function(){
+    $body.removeClass(modalOpenClass);
     $modalContainer.children().fadeOut();
   };
 
   var prepareInsert = function(){
 
-    var $insertContainer = $(".quick-navigation.button-group");
+    var $insertContainer = $(insertContainerSelector);
 
-    $.get(chrome.extension.getURL('content/insert.html'), function(insertContent) {
-      $insertContainer.append(insertContent);
-      $insert = $insertContainer.find(".a12_insert");
-      $insert.click(function(){
-        showModal(MODAL_HELP);
+    $.get(chrome.extension.getURL(insertPath), function(insertContent) {
+      var $insert = $(insertContent).appendTo($insertContainer);
+
+      $insert.on('click', function(){
+        showModal(helpModal);
       });
     });
   };
@@ -98,12 +106,12 @@ var content = (function(){
       var triggerReportDate;
 
       if(typeof(triggerReportTime) == 'undefined'){
-        showModal(MODAL_WELCOME);
+        showModal(welcomeModal);
       } else {
         triggerReportDate = new Date(triggerReportTime);
 
         if(nowDate > triggerReportDate) {
-          showModal(MODAL_REPORT);
+          showModal(reportModal);
         } else {
           console.log('Still in session at ' + nowDate + ', triggering report at ' + triggerReportDate);
         }
@@ -124,7 +132,7 @@ var content = (function(){
   return {
     init: init,
     showModal: showModal,
-    hideModal: hideModal
+    hideModals: hideModals
   }
 
 })();

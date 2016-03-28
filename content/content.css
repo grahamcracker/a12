@@ -77,7 +77,7 @@ body.a12_modal_open{
   font-size: 1em;
 }
 
-.a12_modal.a12_modal_report .report_body{
+.a12_modal.a12_modal_report .body{
   background-color: #fff;
   padding: 1em;
   text-align: left;
@@ -88,15 +88,15 @@ body.a12_modal_open{
   overflow: scroll;
 }
 
-.a12_modal.a12_modal_report .report_body ul{
+.a12_modal.a12_modal_report .body ul{
   margin: 2em 3em;
 }
 
-.a12_modal.a12_modal_report .report_body ul > li > em{
+.a12_modal.a12_modal_report .body ul > li > em{
   color: #777;
 }
 
-.a12_modal.a12_modal_report .report_body #threeletteragencies{
+.a12_modal.a12_modal_report .body .threeletteragencies{
   display: block;
   width: 60%;
   margin: 0 auto;
