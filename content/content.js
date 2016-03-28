@@ -3,7 +3,6 @@ var content = (function(){
   // private
 
   var $body = $("body");
-  var $modal;
   var $modalContainer;
   var $insert;
 
@@ -22,9 +21,9 @@ var content = (function(){
     $modalContainer = $("#a12_modal_container");
 
     $.get(chrome.extension.getURL('content/welcome_modal.html'), function(html){
-      $modalContainer.append(html);
+      var $modal = $(html).appendTo($modalContainer);
 
-      var $modalBeginButton = $modalContainer.find(".begin");
+      var $modalBeginButton = $modal.find(".begin");
       $modalBeginButton.click(function(){
         hideModal();
         resetReportTimer();
@@ -32,9 +31,9 @@ var content = (function(){
     });
 
     $.get(chrome.extension.getURL('content/help_modal.html'), function(html){
-      $modalContainer.append(html);
+      var $modal = $(html).appendTo($modalContainer);
 
-      var $modalRestartButton = $modalContainer.find(".restart");
+      var $modalRestartButton = $modal.find(".restart");
       $modalRestartButton.click(function(){
         hideModal();
         console.log('Restarting from help modal, do something here');
@@ -50,11 +49,11 @@ var content = (function(){
     });
 
     $.get(chrome.extension.getURL('content/report_modal.html'), function(html){
-      $modalContainer.append(html);
+      var $modal = $(html).appendTo($modalContainer);
 
-      $modalContainer.find("#threeletteragencies").attr("src", chrome.extension.getURL("images/threeletteragencies.png"));
+      $modal.find("#threeletteragencies").attr("src", chrome.extension.getURL("images/threeletteragencies.png"));
 
-      var $modalDoneButton = $modalContainer.find(".done");
+      var $modalDoneButton = $modal.find(".done");
       $modalDoneButton.click(function(){
         hideModal();
         console.log('Restarting from report modal, should clear all existing data here');
@@ -68,14 +67,14 @@ var content = (function(){
 
   var showModal = function(modal){
     $body.addClass("a12_modal_open");
-    $modal = $modalContainer.find(modal);
+    var $modal = $modalContainer.find(modal);
     console.log(modal);
     $modal.fadeIn();
   };
 
   var hideModal = function(){
     $body.removeClass("a12_modal_open");
-    $modal.fadeOut();
+    $modalContainer.children().fadeOut();
   };
 
   var prepareInsert = function(){
