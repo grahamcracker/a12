@@ -70,7 +70,27 @@ var content = (function(){
 
       chrome.storage.local.get({heatmaps: {}}, function(s) {
         var heatmaps = s.heatmaps;
-        $modal.find('#heatmaps .count').html(Object.keys(s.heatmaps).length);
+        var $heatmapContainer = $('#heatmaps')
+
+        var largestHeatmaps = [];
+        $.each(heatmaps, function(url, data){
+          largestHeatmaps.push([url, data])
+        });
+
+        // Sort heatmaps by largest, use the first three
+        largestHeatmaps.sort(function(a, b) {return a[1] - b[1]})
+        largestHeatmaps = largestHeatmaps.slice(0, 3);
+
+        for(var i = 0; i < largestHeatmaps.length; i++) {
+          var url = largestHeatmaps[i][0];
+          var data = largestHeatmaps[i][1];
+
+          var $map = $("<div class='heatmap'></div>").appendTo($heatmapContainer);
+            $('<h5></h5>').html("URL: " + url).appendTo($map);
+            $('<label></label>').html("Resolution: " + data.length).appendTo($map);
+          var $canvas = $('<canvas></canvas>').appendTo($map);
+          simpleheat($canvas[0]).data(data).radius(1.5, 3).draw();
+        }
       });
 
       // Last modal is loaded, so we'll start the timing logic

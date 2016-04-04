@@ -10,7 +10,7 @@ function sendHeatmap(){
   chrome.storage.local.get('heatmaps', function(items) {
     var heatmaps = objectForItem(items.heatmaps);
 
-    var thisPageKey = window.location.href;
+    var thisPageKey = window.location.href.split('?')[0];
 
     if(thisPageKey in heatmaps){
       heatmaps[thisPageKey] = heatmaps[thisPageKey].concat(heatpoints);

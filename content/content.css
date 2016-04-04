@@ -25,15 +25,8 @@ body.a12_modal_open {
   text-align: center;
 }
 
-.a12_modal h1, .a12_modal h4, .a12_modal h3, .a12_modal p, .a12_modal table {
-  margin: 2rem;
-}
-.a12_modal h1 {
-  font-size: 2rem;
-}
-
-.a12_modal h3 {
-  font-size: 1.5rem;
+.a12_modal p, .a12_modal h1, .a12_modal h3, .a12_modal h4, .a12_modal table {
+  margin-top: 2rem;
 }
 
 .a12_modal .underline {
@@ -47,6 +40,14 @@ body.a12_modal_open {
 .a12_modal p {
   font-size: 1em;
   line-height: 1.2em;
+}
+
+.a12_modal h1 {
+  font-size: 2rem;
+}
+
+.a12_modal h3 {
+  font-size: 1.5rem;
 }
 
 .a12_modal button {
@@ -92,8 +93,13 @@ body.a12_modal_open {
   height: 100%;
 }
 
+.a12_modal.a12_modal_report button.done {
+  margin-bottom: 2em;
+}
+
 .a12_modal.a12_modal_report .body {
   padding: 2em 0em 1em 0em;
+  margin-bottom: 2em;
   text-align: left;
   width: 70%;
   margin: 0 auto;
@@ -142,4 +148,20 @@ body.a12_modal_open {
 
 .a12_modal.a12_modal_report .body .a12-logo {
   width: 250px;
+}
+
+.a12_modal.a12_modal_report .heatmap > h5 {
+  font-size: .9rem;
+  margin-bottom: 1rem;
+}
+
+.a12_modal.a12_modal_report .heatmap > label {
+  color: #666;
+  display: block;
+}
+
+.a12_modal.a12_modal_report .heatmap > canvas {
+  width: 60%;
+  background-color: #1e1e1e;
+  margin: .5em 0em;
 }
