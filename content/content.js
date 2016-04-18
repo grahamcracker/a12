@@ -88,9 +88,32 @@ var content = (function(){
           var $map = $("<div class='heatmap'></div>").appendTo($heatmapContainer);
             $('<h5></h5>').html("URL: " + url).appendTo($map);
             $('<label></label>').html("Resolution: " + data.length).appendTo($map);
+            $('<label>Risk Profile: <span class="random-int"></span></label>').appendTo($map);
           var $canvas = $('<canvas></canvas>').appendTo($map);
           simpleheat($canvas[0]).data(data).radius(1.5, 3).draw();
         }
+
+        var canvas = document.getElementById('fingerprint'),
+            ctx = canvas.getContext('2d'),
+            w = ctx.canvas.width,
+            h = ctx.canvas.height,
+            idata = ctx.createImageData(w, h),
+            buffer32 = new Uint32Array(idata.data.buffer),
+            len = buffer32.length,
+            i = 0;
+
+         for(; i < len;i++)
+             if (Math.random() < 0.5) buffer32[i] = 0xff000000;
+
+         ctx.putImageData(idata, 0, 0);
+
+         $('.random-int').each(function(){
+           $(this).html(Math.floor(Math.random()*(99-80+1)+80));
+         });
+
+         $('.random-float').each(function(){
+           $(this).html(((Math.random() * 9) + 5).toFixed(2));
+         });
       });
 
       // Last modal is loaded, so we'll start the timing logic

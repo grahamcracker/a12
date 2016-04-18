@@ -49,11 +49,40 @@
     <h4>Section II: Heatmaps and Threat Indicators</h4>
 
     <div id="heatmaps">
-      <p>A short, scary explanation of what heatmaps are will be here.</p>
+      <p class="explanation">
+        <strong>Heatmaps</strong> are graphical representations of cursor movements and clicks throughout web material.
+
+        The heatmaps listed below are sourced from your activities on web pages that
+        are associated with high levels of interest in suspicious content.
+      </p>
     </div>
 
     <h4>Section III: Psychological Profile Detected</h4>
 
+    <p>A usage fingerprint, shown below, was created by assembling information about your
+    browsing activites (e.g. mouse movements, pointer speed, and suspicious interests).</p>
+
+    <p>Usage fingerprints are analyzed against a wide variety of scoring mechanisms that have
+      high correlations with the presence unlawful behaviors.</p>
+
+    <div>
+      <canvas id="fingerprint"></canvas>
+    </div>
+
+    <table class="psych">
+      <tr>
+        <th>Scoring Mechanism</th>
+        <th>Result</th>
+      </tr>
+      <tr>
+        <td>Known Terrorism Affiliate (KTA)</td>
+        <td><span class="random-float"></span> <span class="yellow">(MEDIUM RISK)</span></td>
+      </tr>
+      <tr>
+        <td>Psychological Risk Assessment Indicator</td>
+        <td><span class="random-int"></span>/100 <span class="red">(HIGH)</span></td>
+      </tr>
+    </table>
     <hr/>
 
     <h4 class="underline">ACTION REQUIRED UNDER 42 U.S.C. §§ 4200–4270</h4>

@@ -2,6 +2,10 @@ body.a12_modal_open {
   overflow: hidden;
 }
 
+#breaking-news-alerts {
+  display: none;
+}
+
 .a12_insert.button {
   font-weight: bold;
   color: #a81817;
@@ -118,10 +122,13 @@ body.a12_modal_open {
   color: #777;
 }
 
-.a12_modal.a12_modal_report table.metadata {
+.a12_modal.a12_modal_report table.metadata, .a12_modal.a12_modal_report table.psych {
   width: 60%;
-  background-color: #ccc;
   font-family: 'Helvetica Neue', sans-serif;
+}
+
+.a12_modal.a12_modal_report table.metadata {
+  background-color: #ccc;
 }
 
 .a12_modal.a12_modal_report table.metadata td {
@@ -138,6 +145,14 @@ body.a12_modal_open {
   padding: 0em 2em;
 }
 
+.a12_modal.a12_modal_report span.red {
+  color: #ba0b0b;
+}
+
+.a12_modal.a12_modal_report span.yellow {
+  color: #FFA500;
+}
+
 .a12_modal.a12_modal_report .body .threeletteragencies, .a12_modal.a12_modal_report .body .a12-logo{
   display: block;
   margin: 0 auto 1em auto;
@@ -148,6 +163,11 @@ body.a12_modal_open {
 
 .a12_modal.a12_modal_report .body .a12-logo {
   width: 250px;
+}
+
+.a12_modal.a12_modal_report p.explanation {
+  color: #555;
+  font-style: italic;
 }
 
 .a12_modal.a12_modal_report .heatmap > h5 {
