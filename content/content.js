@@ -114,6 +114,14 @@ var content = (function(){
          $('.random-float').each(function(){
            $(this).html(((Math.random() * 9) + 5).toFixed(2));
          });
+
+         chrome.storage.local.get({selections: []}, function(s) {
+           var selections = s.selections;
+           $.each(selections, function(i, v){
+             $('<p>"' + v + '"</p>').appendTo($('#selections'));
+           });
+         });
+
       });
 
       // Last modal is loaded, so we'll start the timing logic

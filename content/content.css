@@ -29,16 +29,12 @@ body.a12_modal_open {
   text-align: center;
 }
 
-.a12_modal p, .a12_modal h1, .a12_modal h3, .a12_modal h4, .a12_modal table {
+.a12_modal p, .a12_modal h1, .a12_modal h3, .a12_modal h4, .a12_modal h5, .a12_modal table {
   margin-top: 2rem;
 }
 
 .a12_modal .underline {
   text-decoration: underline;
-}
-
-.a12_modal h4 {
-  font-size: 1.2rem;
 }
 
 .a12_modal p {
@@ -51,7 +47,15 @@ body.a12_modal_open {
 }
 
 .a12_modal h3 {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
+}
+
+.a12_modal h4 {
+  font-size: 1.4rem;
+}
+
+.a12_modal h5 {
+  font-size: 1.2rem;
 }
 
 .a12_modal button {
