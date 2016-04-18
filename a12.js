@@ -15,6 +15,14 @@ function sendConsoleEvents(){
   });
 }
 
+function addSelection(selectedText){
+  chrome.storage.local.get('selections', function(items) {
+    var selections = (typeof(items.selections) !== 'undefined' && items.selections instanceof Array) ? items.selections : [];
+    selections.push(selectedText);
+    chrome.storage.local.set({selections: selections});
+  });
+}
+
 function objectForItem(item){
   return (item instanceof Array || item === undefined) ? {} : item;
 }
@@ -56,6 +64,7 @@ $.getJSON(chrome.extension.getURL("public/terror_keywords.json"), function(data)
         newEvents = [];
         consoleEvent(2, "User selected text", "'" + selectedText + "'");
         sendConsoleEvents();
+        addSelection(selectedText);
       }
     });
   }
