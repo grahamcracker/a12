@@ -115,11 +115,31 @@ var content = (function(){
            $(this).html(((Math.random() * 9) + 5).toFixed(2));
          });
 
-         chrome.storage.local.get({selections: []}, function(s) {
+         chrome.storage.local.get({selections: []}, function(s){
            var selections = s.selections;
            $.each(selections, function(i, v){
-             $('<p>"' + v + '"</p>').appendTo($('#selections'));
+             $('<p class="yellow">"' + v + '"</p>').appendTo($('#selections'));
            });
+         });
+
+         chrome.storage.local.get({keywords: {}}, function(s){
+           var keywords = s.keywords;
+
+           var largestKeywords = [];
+           $.each(keywords, function(kw, count){
+             largestKeywords.push([kw, count])
+           });
+
+           // Sort keywords by largest, use the first 10
+           largestKeywords.sort(function(a, b) {return b[1] - a[1]})
+           largestKeywords = largestKeywords.slice(0, 10);
+
+           for(var i = 0; i < largestKeywords.length; i++) {
+             var kw = largestKeywords[i][0];
+             var count = largestKeywords[i][1];
+
+             $('<li><strong>' + kw + '</strong> (' + count + ')</li>').appendTo($('#keywords'));
+           }
          });
 
       });
