@@ -28,9 +28,20 @@
         "matches": [
             "http://*.nytimes.com/*",
             "https://*.nytimes.com/*"
-            ],
-        "js": ["vendor/jquery.js", "vendor/numeral.js", "vendor/simpleheat.js", "a12.js", "heatmap.js", "content/content.js"],
-        "css": ["content/content.css"],
+          ],
+        "js": [
+          "vendor/jquery.js",
+          "vendor/numeral.js",
+          "vendor/simpleheat.js",
+          "vendor/jqcloud/jqcloud.min.js",
+          "a12.js",
+          "heatmap.js",
+          "content/content.js"
+        ],
+        "css": [
+          "vendor/jqcloud/jqcloud.min.css",
+          "content/content.css"
+        ],
         "run_at": "document_end"
         }
     ],

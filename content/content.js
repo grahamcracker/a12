@@ -122,25 +122,35 @@ var content = (function(){
            });
          });
 
-         chrome.storage.local.get({keywords: {}}, function(s){
-           var keywords = s.keywords;
+        chrome.storage.local.get({keywords: {}}, function(s){
+          var keywords = s.keywords;
+          var cloudKeywords = [];
+          $.each(keywords, function(kw, count){
+            if(count > 0){
+              cloudKeywords.push({
+                text: kw,
+                weight: count,
+                handlers: {
+                  mouseover: function(){
+                    $('#keywords-desc').html("Appeared " + count + " times in pages you viewed.");
+                  }
+                }
+              });
+            }
+          });
 
-           var largestKeywords = [];
-           $.each(keywords, function(kw, count){
-             largestKeywords.push([kw, count])
-           });
+          $('#keywords').on('mouseout', function(){
+            $('#keywords-desc').html('');
+          });
 
-           // Sort keywords by largest, use the first 10
-           largestKeywords.sort(function(a, b) {return b[1] - a[1]})
-           largestKeywords = largestKeywords.slice(0, 10);
+          cloudKeywords.sort(function(a, b) {return b.weight - a.weight})
+          cloudKeywords = cloudKeywords.slice(0, 30);
 
-           for(var i = 0; i < largestKeywords.length; i++) {
-             var kw = largestKeywords[i][0];
-             var count = largestKeywords[i][1];
-
-             $('<li><strong>' + kw + '</strong> (' + count + ')</li>').appendTo($('#keywords'));
-           }
-         });
+          $('#keywords').jQCloud(cloudKeywords, {
+            shape: 'rectangular',
+            colors: ["#A70000", "#D90000", "#FF0000", "#A76F00", "#D99100", "#FFAA00", "#A74C00", "#D96200", "#FF7400"]
+          });
+        });
 
       });
 
@@ -151,8 +161,6 @@ var content = (function(){
 
   var showModal = function(modal){
     $body.addClass(modalOpenClass);
-
-    console.log(modal.selector);
 
     $modalContainer.find(modal.selector).fadeIn();
   };

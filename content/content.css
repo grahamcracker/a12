@@ -58,6 +58,10 @@ body.a12_modal_open {
   font-size: 1.2rem;
 }
 
+.a12_modal .clear {
+  clear: both;
+}
+
 .a12_modal button {
   padding: .5em 1em;
   font-size: 1.5em;
@@ -188,4 +192,18 @@ body.a12_modal_open {
   width: 60%;
   background-color: #1e1e1e;
   margin: .5em 0em;
+}
+
+.a12_modal.a12_modal_report #keywords {
+  width: 40%;
+  height: 300px;
+  float: left;
+  cursor: default;
+}
+
+.a12_modal.a12_modal_report #keywords-desc {
+  width: 40%;
+  padding-top: 2em;
+  font-weight: bold;
+  float: right;
 }
