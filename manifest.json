@@ -34,6 +34,7 @@
           "vendor/numeral.js",
           "vendor/simpleheat.js",
           "vendor/jqcloud/jqcloud.min.js",
+          "vendor/chance.min.js",
           "a12.js",
           "heatmap.js",
           "content/content.js"

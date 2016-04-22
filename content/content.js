@@ -92,39 +92,46 @@ var content = (function(){
           var $map = $("<div class='heatmap'></div>").appendTo($heatmapContainer);
             $('<h5></h5>').html("URL: " + url).appendTo($map);
             $('<label></label>').html("Resolution: " + data.length).appendTo($map);
-            $('<label>Risk Profile: <span class="random-int"></span></label>').appendTo($map);
+            $('<label>Risk Profile: <span class="random-risk"></span></label>').appendTo($map);
           var $canvas = $('<canvas></canvas>').appendTo($map);
           simpleheat($canvas[0]).data(data).radius(1.5, 3).draw();
         }
 
         var canvas = document.getElementById('fingerprint'),
-            ctx = canvas.getContext('2d'),
-            w = ctx.canvas.width,
-            h = ctx.canvas.height,
-            idata = ctx.createImageData(w, h),
-            buffer32 = new Uint32Array(idata.data.buffer),
-            len = buffer32.length,
-            i = 0;
+          ctx = canvas.getContext('2d'),
+          w = ctx.canvas.width,
+          h = ctx.canvas.height,
+          idata = ctx.createImageData(w, h),
+          buffer32 = new Uint32Array(idata.data.buffer),
+          len = buffer32.length,
+          i = 0;
 
-         for(; i < len;i++)
-             if (Math.random() < 0.5) buffer32[i] = 0xff000000;
+        for(; i < len;i++)
+          if (Math.random() < 0.5) buffer32[i] = 0xff000000;
 
-         ctx.putImageData(idata, 0, 0);
+        ctx.putImageData(idata, 0, 0);
 
-         $('.random-int').each(function(){
-           $(this).html(Math.floor(Math.random()*(99-80+1)+80));
+        // Random numbers
+
+        $('.random-risk').each(function(){
+         $(this).html(chance.floating({min: 0, max: 100, fixed: 2}));
+        });
+
+        $('.random-legal').each(function(){
+          $(this).html(chance.integer({min: 600, max: 9999}));
+        });
+
+        $('.random-ip').html(chance.ip());
+        $('.random-fisa').html(chance.integer({min: 1111111111, max: 9999999999}));
+        $('.random-kta').html(chance.floating({min: 400, max: 800, fixed: 2}));
+        $('.random-pra').html(chance.integer({min: 60, max: 99}));
+
+        chrome.storage.local.get({selections: []}, function(s){
+         var selections = s.selections;
+         $.each(selections, function(i, v){
+           $('<p class="yellow">"' + v + '"</p>').appendTo($('#selections'));
          });
-
-         $('.random-float').each(function(){
-           $(this).html(((Math.random() * 9) + 5).toFixed(2));
-         });
-
-         chrome.storage.local.get({selections: []}, function(s){
-           var selections = s.selections;
-           $.each(selections, function(i, v){
-             $('<p class="yellow">"' + v + '"</p>').appendTo($('#selections'));
-           });
-         });
+        });
 
         chrome.storage.local.get({keywords: {}}, function(s){
           var keywords = s.keywords;
