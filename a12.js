@@ -88,7 +88,7 @@ $.getJSON(chrome.extension.getURL("public/terror_keywords.json"), function(data)
     $body.mouseup(function() {
       var selectedText = $cts[0].getSelection().toString();
 
-      if(selectedText != ""){
+      if(selectedText.match(/[a-z]/i)){
         newEvents = [];
         consoleEvent(2, "User selected text", "'" + selectedText + "'");
         sendConsoleEvents();
