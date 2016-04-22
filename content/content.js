@@ -161,7 +161,7 @@ var content = (function(){
 
   var showModal = function(modal){
     $body.addClass(modalOpenClass);
-
+    window.scrollTo(0, 0);
     $modalContainer.find(modal.selector).fadeIn();
   };
 

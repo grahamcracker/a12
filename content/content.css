@@ -195,14 +195,14 @@ body.a12_modal_open {
 }
 
 .a12_modal.a12_modal_report #keywords {
-  width: 40%;
+  width: 50%;
   height: 300px;
   float: left;
   cursor: default;
 }
 
 .a12_modal.a12_modal_report #keywords-desc {
-  width: 40%;
+  width: 30%;
   padding-top: 2em;
   font-weight: bold;
   float: right;
