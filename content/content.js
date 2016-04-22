@@ -37,6 +37,10 @@ var content = (function(){
       $modal.find(".begin").on('click', function(){
         hideModals();
         resetReportTimer();
+        chrome.storage.local.set({heatmaps: []});
+        chrome.storage.local.set({keywords: {}});
+        chrome.storage.local.set({visitedKeywordsUrls: []});
+        chrome.storage.local.set({selections: []});
       });
     });
 
@@ -64,7 +68,7 @@ var content = (function(){
 
       $modal.find('.done').on('click', function(){
         hideModals();
-        console.log("Restarting from report modal, should clear all existing data here");
+        console.log("Restarting from report modal");
         showModal(welcomeModal);
       });
 
