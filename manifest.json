@@ -6,7 +6,8 @@
     "version": "0.1",
 
     "permissions": [
-      "tabs","<all_urls>"
+      "tabs",
+      "<all_urls>"
     ],
 
     "web_accessible_resources": [
@@ -27,8 +28,9 @@
         {
         "matches": [
             "http://*.nytimes.com/*",
-            "https://*.nytimes.com/*"
-          ],
+            "https://*.nytimes.com/*",
+            "http://api.duckduckgo.com/*"
+        ],
         "js": [
           "vendor/jquery.js",
           "vendor/numeral.js",

@@ -150,16 +150,31 @@ var content = (function(){
             }
           });
 
-          $('#keywords').on('mouseout', function(){
-            $('#keywords-desc').html('');
-          });
-
           cloudKeywords.sort(function(a, b) {return b.weight - a.weight})
           cloudKeywords = cloudKeywords.slice(0, 30);
 
           $('#keywords').jQCloud(cloudKeywords, {
             shape: 'rectangular',
             colors: ["#A70000", "#D90000", "#FF0000", "#A76F00", "#D99100", "#FFAA00", "#A74C00", "#D96200", "#FF7400"]
+          });
+
+          $('#keywords').on('mouseout', function(){
+            $('#keywords-desc').html('');
+          });
+
+          var imagesIncluded = 0;
+          $.each(cloudKeywords, function(k, o){
+            $.getJSON("http://api.duckduckgo.com/?format=json&q=" + o.text, function(response) {
+              var firstTopic = response.RelatedTopics[0];
+              if(firstTopic != undefined){
+                var imageURL = firstTopic.Icon.URL;
+                if(imageURL != "" && imagesIncluded < 8){
+                  $('<div><span>' + o.text + '</span><img src="' + imageURL + '"/><small>found  ' + o.weight + ' times</small></div>')
+                    .appendTo($('#keywords-images'));
+                  imagesIncluded++;
+                }
+              }
+            });
           });
         });
 

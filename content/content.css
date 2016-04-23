@@ -207,3 +207,71 @@ body.a12_modal_open {
   font-weight: bold;
   float: right;
 }
+
+.a12_modal.a12_modal_report .keywords-images-header {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.a12_modal.a12_modal_report #keywords-images {
+  font-size: 0;
+}
+
+.a12_modal.a12_modal_report #keywords-images > div {
+  display: inline-block;
+  overflow: hidden;
+  background-color: #000;
+  width: 25%;
+  height: 140px;
+  line-height: 140px;
+  position: relative;
+  text-align: center;
+  cursor: default;
+}
+
+.a12_modal.a12_modal_report #keywords-images > div > img {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 140px;
+  z-index: 1;
+  opacity: 0.6;
+  transform: scale(1.03);
+}
+
+.a12_modal.a12_modal_report #keywords-images > div:hover > img {
+  opacity: .4;
+  transition: opacity .4s
+}
+
+.a12_modal.a12_modal_report #keywords-images > div > span {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #fff;
+  display: inline-block;
+  transition: transform .3s;
+}
+
+.a12_modal.a12_modal_report #keywords-images > div:hover > span {
+  transform: translate(0, -.7rem);
+}
+
+.a12_modal.a12_modal_report #keywords-images > div > small {
+  position: absolute;
+  z-index: 2;
+  color: #fff;
+  font-size: .9rem;
+  display: inline-block;
+  top: 10%;
+  left: 33%;
+  opacity: 0;
+}
+
+.a12_modal.a12_modal_report #keywords-images > div:hover > small {
+  opacity: 1;
+  transition: opacity .3s ease;
+}
