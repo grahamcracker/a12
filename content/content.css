@@ -11,6 +11,22 @@ body.a12_modal_open {
   color: #a81817;
 }
 
+#alternate_done {
+  font-weight: bold;
+  font-size: .8rem;
+  color: #a81817;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  position: fixed;
+  top: 5%;
+  left: 2%;
+}
+
+#alternate_done:hover {
+  border-color: #999;
+}
+
 .a12_modal {
   display: none;
   z-index: 1000000091;

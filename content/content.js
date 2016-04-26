@@ -66,7 +66,7 @@ var content = (function(){
       $modal.find('.threeletteragencies').attr('src', chrome.extension.getURL('images/threeletteragencies.png'));
       $modal.find('.a12-logo').attr('src', chrome.extension.getURL('images/a12.png'));
 
-      $modal.find('.done').on('click', function(){
+      $modal.find('.done,#alternate_done').on('click', function(){
         hideModals();
         console.log("Restarting from report modal");
         showModal(welcomeModal);
