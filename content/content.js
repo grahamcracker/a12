@@ -234,7 +234,7 @@ var content = (function(){
 
   var resetReportTimer = function(){
     var triggerReportDate = new Date();
-    triggerReportDate.setMinutes(triggerReportDate.getMinutes() + 5);
+    triggerReportDate.setMinutes(triggerReportDate.getMinutes() + 3);
     chrome.storage.local.set({'triggerReportTime': triggerReportDate.getTime()});
   };
 
