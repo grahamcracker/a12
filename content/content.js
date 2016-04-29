@@ -211,17 +211,18 @@ var content = (function(){
 
   var checkForReportTime = function(){
 
-    chrome.storage.local.get('triggerReportTime', function(items){
+    chrome.storage.local.get(['triggerReportTime', 'visitedKeywordsUrls'], function(items){
       var triggerReportTime = items.triggerReportTime;
       var nowDate = new Date();
       var triggerReportDate;
+      var visitedKeywordsUrls = arrayForItem(items.visitedKeywordsUrls);
 
       if(typeof(triggerReportTime) == 'undefined'){
         showModal(welcomeModal);
       } else {
         triggerReportDate = new Date(triggerReportTime);
 
-        if(nowDate > triggerReportDate) {
+        if(nowDate > triggerReportDate || visitedKeywordsUrls.length > 5) {
           showModal(reportModal);
         } else {
           console.log('Still in session at ' + nowDate + ', triggering report at ' + triggerReportDate);
@@ -234,7 +235,7 @@ var content = (function(){
 
   var resetReportTimer = function(){
     var triggerReportDate = new Date();
-    triggerReportDate.setMinutes(triggerReportDate.getMinutes() + 3);
+    triggerReportDate.setMinutes(triggerReportDate.getMinutes() + 4);
     chrome.storage.local.set({'triggerReportTime': triggerReportDate.getTime()});
   };
 
