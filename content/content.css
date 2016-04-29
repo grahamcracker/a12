@@ -13,8 +13,9 @@ body.a12_modal_open {
 
 #alternate_done {
   font-weight: bold;
-  font-size: .8rem;
+  font-size: 1rem;
   color: #a81817;
+  padding: 1rem;
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -56,6 +57,10 @@ body.a12_modal_open {
 .a12_modal p {
   font-size: 1em;
   line-height: 1.2em;
+}
+
+.a12_modal p.larger {
+  font-size: 1.2em;
 }
 
 .a12_modal h1 {
