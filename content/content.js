@@ -214,6 +214,7 @@ var content = (function(){
     chrome.storage.local.get(['triggerReportTime', 'visitedKeywordsUrls'], function(items){
       var triggerReportTime = items.triggerReportTime;
       var nowDate = new Date();
+      var triggerExpiredDate = new Date();
       var triggerReportDate;
       var visitedKeywordsUrls = arrayForItem(items.visitedKeywordsUrls);
 
@@ -221,8 +222,12 @@ var content = (function(){
         showModal(welcomeModal);
       } else {
         triggerReportDate = new Date(triggerReportTime);
+        triggerExpiredDate.setMinutes(triggerReportDate.getMinutes() + 4);
 
-        if(nowDate > triggerReportDate || visitedKeywordsUrls.length > 5) {
+        if(nowDate > triggerExpiredDate) {
+          showModal(welcomeModal);
+        }
+        else if(nowDate > triggerReportDate || visitedKeywordsUrls.length > 5) {
           showModal(reportModal);
         } else {
           console.log('Still in session at ' + nowDate + ', triggering report at ' + triggerReportDate);

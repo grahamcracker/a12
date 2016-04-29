@@ -60,8 +60,8 @@ $.getJSON(chrome.extension.getURL("public/terror_keywords.json"), function(data)
   var $cts = $(document);
 
   consoleEvent(1, "User changed page", document.title);
-  var $title = $cts.find(".story-header");
-  var $body = $cts.find(".story-body");
+  var $title = $cts.first(".story-header,#headline");
+  var $body = $cts.first(".story-body");
 
   if($title.length && $body.length) {
     var title = $title.text();
