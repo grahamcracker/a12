@@ -2,7 +2,7 @@
     "manifest_version":2,
 
     "name": "Administration 12",
-    "description": "NYT Surveillance Report",
+    "description": "News Experience",
     "version": "0.1",
 
     "permissions": [
