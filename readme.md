@@ -23,3 +23,9 @@ I created this project as part of my creative seminar thesis at Rensselaer Polyt
 **To improve:** Make sure "Developer mode" is checked in Window -> Extensions before loading the unpacked extension into Chrome. Please feel free to send a pull request, and I'll review it as quickly as possible!
 
 The code is not in a great state right now, and could use a thorough refactoring and tests. I'll try to improve this situation as soon as I can.
+
+#### Screenshots (an example alert shown after some browsing activity)
+
+![First screenshot](https://github.com/grahamcracker/a12/blob/master/images/screenshot1.png?raw=true)
+![Second screenshot](https://github.com/grahamcracker/a12/blob/master/images/screenshot2.png?raw=true)
+![Third screenshot](https://github.com/grahamcracker/a12/blob/master/images/screenshot3.png?raw=true)
